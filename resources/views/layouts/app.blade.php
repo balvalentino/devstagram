@@ -7,7 +7,6 @@
     @stack('styles')
     <title>DevStagram - @yield('titulo')</title>
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
 </head>
 
 <body class="bg-gray-100">
@@ -16,7 +15,10 @@
     <div class="container mx-auto flex justify-between items-center">
 
         <h1 class="text-3xl font-black">
-            DevStagram
+            <a href=" {{ '/' }}">
+                DevStagram
+            </a>
+
         </h1>
 
         @auth
