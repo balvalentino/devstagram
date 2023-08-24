@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@vite('resources/js/app.js')
-
 @section('titulo')
     Crea una nueva publicación
 @endsection
