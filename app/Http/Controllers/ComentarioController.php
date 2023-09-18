@@ -22,7 +22,7 @@ class ComentarioController extends Controller
            'post_id' => $post->id,
            'comentario' => $request->comentario
         ]);
-
+        //TODO: hacer reactiva la caja de comentarios
         //imprimir un mensaje
         return back()->with('mensaje', 'Comentario realizado correctamente');
     }
