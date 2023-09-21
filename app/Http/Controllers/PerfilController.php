@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -28,21 +29,22 @@ class PerfilController extends Controller
         ]);
 
         if ($request->imagen) {
+            $folder = "perfiles";
+
             $imagen = $request->file('imagen');
 
-            $nombreImagen = Str::uuid() . '.' . $imagen->extension();
+            //$nombreImagen = Str::uuid() . '.' . $imagen->extension();
 
             $imagenServidor = Image::make($imagen);
             $imagenServidor->fit(1000, 1000);
 
-            $imagenPath = public_path('perfiles') . '/' . $nombreImagen;
-            $imagenServidor->save($imagenPath);
+            $imagenPath = Storage::disk('s3')->put($folder, $imagen, 'public');
         }
 
         //Guardar cambios
         $usuario = User::find(auth()->user()->id);
         $usuario->username = $request->username;
-        $usuario->imagen = $nombreImagen ?? auth()->user()->imagen ?? null;
+        $usuario->imagen = $imagenPath ?? auth()->user()->imagen ?? null;
         $usuario->save();
 
         //Redireccionar
