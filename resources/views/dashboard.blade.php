@@ -9,7 +9,7 @@
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12 lg:w-6/12 px-5">
-                <img src="{{ Storage::disk('s3')->url($user->imagen) }}"
+                <img src="{{ $user->imagen ? Storage::disk('s3')->url($post->imagen) : asset('img/usuario.svg') }}"
                      alt="imagen usuario">
             </div>
             <div
