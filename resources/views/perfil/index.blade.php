@@ -8,7 +8,8 @@
 @section('contenido')
     <div class="md:flex md:justify-center">
         <div class="md:w-1/2 bg-white shadow p-6">
-            <form action="{{ route('perfil.store') }}" method="POST" enctype="multipart/form-data" class="mt-10 md:mt-0">
+            <form action="{{ route('perfil.store') }}" method="POST" enctype="multipart/form-data"
+                  class="mt-10 md:mt-0">
                 @csrf
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -30,7 +31,7 @@
 
                 <div class="mb-5">
                     <label for="imagen" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Username
+                        Foto de perfil
                     </label>
                     <input
                         type="file"
@@ -54,4 +55,7 @@
             </form>
         </div>
     </div>
+    @push('scripts')
+        <script src="{{ asset('js/file.js') }}"
+    @endpush
 @endsection

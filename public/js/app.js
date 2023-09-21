@@ -20,7 +20,7 @@ dropzone.on('success', function (file, response) {
 });
 
 dropzone.on('error', function (file, response) {
-    const message = response.message
+    const message = 'El tamaño de la imagen debe ser menor a 1MB'
     const elements = document.querySelectorAll('.dz-error-message span')
     const lastElement = elements[elements.length - 1]
     lastElement.textContent = message
@@ -29,3 +29,5 @@ dropzone.on('error', function (file, response) {
 dropzone.on('removedfile', function (file, response){
     console.log(response);
 });
+
+
