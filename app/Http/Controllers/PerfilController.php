@@ -26,6 +26,7 @@ class PerfilController extends Controller
 
         $this->validate($request, [
             'username' => ['required', 'unique:users,username,' . auth()->user()->id, 'min:3', 'max:20', 'not_in:editar-perfil'],
+            'imagen' => ['image', 'max:1000'],
         ]);
 
         if ($request->imagen) {

@@ -20,7 +20,10 @@ dropzone.on('success', function (file, response) {
 });
 
 dropzone.on('error', function (file, response) {
-    console.log(response);
+    const message = response.message
+    const elements = document.querySelectorAll('.dz-error-message span')
+    const lastElement = elements[elements.length - 1]
+    lastElement.textContent = message
 });
 
 dropzone.on('removedfile', function (file, response){
