@@ -13,6 +13,10 @@ class ImagenController extends Controller
 
         $folder = "imagenes";
 
+        $this->validate($request, [
+            'file' => 'required|image|max:1000'
+        ]);
+
         $imagen = $request->file('file');
 
         $imagenServidor = Image::make($imagen);
