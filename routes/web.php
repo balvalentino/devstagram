@@ -22,6 +22,10 @@ use App\Http\Controllers\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::group(['middleware'=>'custom_middleware'], function () {
+    ini_set('upload_max_filesize', '5000M');
+    ini_set('post_max_size', '5000M');
+});
 
 Route::get('/', HomeController::class)->name('home');
 
