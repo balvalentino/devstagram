@@ -17,7 +17,7 @@ const dropzone = new Dropzone('#dropzone', {
             imagenPublicada.name = document.querySelector('[name="imagen"]').value;
 
             this.options.addedfile.call(this, imagenPublicada);
-            this.options.thumbnail.call(this, imagenPublicada, `/uploads/${imagenPublicada.name}`);
+            this.options.thumbnail.call(this, imagenPublicada, `https://devstagram.s3.sa-east-1.amazonaws.com/${imagenPublicada.name}`);
 
             imagenPublicada.previewElement.classList.add('dz-success', 'dz-complete');
 
@@ -30,7 +30,7 @@ dropzone.on('success', function (file, response) {
 });
 
 dropzone.on('error', function (file, response) {
-    const message = 'HOLA'
+    const message = 'El tamaño de la imagen debe ser menor a 1MB'
     const elements = document.querySelectorAll('.dz-error-message span')
     const lastElement = elements[elements.length - 1]
     lastElement.textContent = message
